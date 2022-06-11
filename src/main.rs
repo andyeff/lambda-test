@@ -10,6 +10,9 @@ use lambda::error::HandlerError;
 
 use std::error::Error;
 
+use log::LevelFilter;
+use simple_logger::SimpleLogger;
+
 #[derive(Deserialize, Clone)]
 struct CustomEvent {
     #[serde(rename = "firstName")]
@@ -21,7 +24,12 @@ struct CustomOutput {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    simple_logger::init_with_level(log::Level::Info)?;
+    // simple_logger::init_with_level(log::Level::Info)?;
+    SimpleLogger::new()
+        .with_level(LevelFilter::Info)
+        .with_utc_timestamps()
+        .init()
+        .unwrap();
     lambda!(my_handler);
 
     Ok(())
