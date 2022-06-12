@@ -7,6 +7,7 @@ This here is me getting to grips with writing Rust code with AWS Lambda as the t
 Start a project as usual, with `cargo new lambda-test`
 
 Add some suitable deps:
+
 * lambda_runtime
 * serde
 * serde_json
